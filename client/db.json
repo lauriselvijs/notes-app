@@ -1,0 +1,22 @@
+{
+  "notes": [
+    {
+      "id": 2,
+      "subject": "Job",
+      "author": "Fred",
+      "text": "Take a vacation"
+    },
+    {
+      "id": 3,
+      "subject": "Job",
+      "author": "Fred",
+      "text": "Finish assignment"
+    },
+    {
+      "id": 4,
+      "subject": "Job",
+      "author": "Fred",
+      "text": "Receive bonus"
+    }
+  ]
+}

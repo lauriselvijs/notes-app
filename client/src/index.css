@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.header {
+  align-items: center;
+}
+
+.btn {
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.note {
+  font-family: "Handlee", sans-serif;
+  position: relative;
+  min-height: 250px;
+  min-width: 250px;
+  background-repeat: no-repeat;
+  background-image: url("./images/stickyNote.svg");
+  margin: 5px;
+  padding: 20px 30px;
+  text-align: center;
+}
+
+.bs-fill-trash-fill {
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+}
+
+.footer {
+  grid-column: 1 / 4;
+  position: relative;
+  text-align: center;
+}
+
+.about {
+  grid-column: 2 / 3;
+  text-align: center;
+  min-height: 250px;
+  min-width: 250px;
+  background-repeat: no-repeat;
+  background-image: url("./images/stickyNote.svg");
+}
+
+.copyright-year {
+  margin: 5px;
+}
+
+.notes-modal-form {
+  background-color: #ffff34;
+}
