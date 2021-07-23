@@ -9,6 +9,7 @@ const ModalForm = ({ onClickShow, onClickClose, show, onAdd }) => {
   const [author, setAuthor] = useState();
   const [text, setText] = useState();
 
+  // checking for empty input
   const onSubmit = (e) => {
     e.preventDefault();
 

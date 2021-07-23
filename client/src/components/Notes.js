@@ -1,5 +1,6 @@
 import Note from "./Note";
 
+// creating new notes from notes array
 const Notes = ({ notes, onDelete }) => {
   return (
     <>

@@ -20,7 +20,7 @@ const App = () => {
     getNotes();
   }, []);
 
-  // fetch Notes
+  // Fetch Notes
   const fetchNotes = async () => {
     const res = await fetch("/api/v1/notes");
     const data = await res.json();
@@ -41,6 +41,7 @@ const App = () => {
     setNotes([...notes, data.data]);
   };
 
+  // Delete notes
   const deleteNote = async (id) => {
     await fetch(`/api/v1/notes/${id}`, {
       method: "DELETE",

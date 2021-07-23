@@ -1,6 +1,7 @@
 import React from "react";
 import { BsFillTrashFill } from "react-icons/bs";
 
+// outputing information from notes array
 const Note = ({ note, onDelete }) => {
   return (
     <div className="note">
