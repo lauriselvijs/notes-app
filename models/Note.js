@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const NoteSchema = new mongoose.Schema({
+  user_id: {
+    type: String,
+  },
   subject: {
     type: String,
     trim: true,
@@ -15,6 +18,10 @@ const NoteSchema = new mongoose.Schema({
     type: String,
     trim: true,
     required: [true, "Please enter some text"],
+  },
+  date: {
+    type: Date,
+    default: Date.now,
   },
 });
 

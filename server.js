@@ -1,7 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const colors = require("colors");
-const morgan = require("morgan");
 const connectDB = require("./config/db");
 
 dotenv.config({ path: "./config/config.env" });
@@ -9,12 +8,16 @@ dotenv.config({ path: "./config/config.env" });
 connectDB();
 
 const notes = require("./routes/notes");
+const users = require("./routes/users");
+const auth = require("./routes/auth");
 
 const app = express();
 
 app.use(express.json());
 
 app.use("/api/v1/notes", notes);
+app.use("/api/v1/users", users);
+app.use("/api/v1/auth", auth);
 
 const PORT = process.env.PORT || 5000;
 

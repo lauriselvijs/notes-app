@@ -2,7 +2,7 @@ const Note = require("../models/Note");
 
 // @desc Get all notes
 // @route GET /api/v1/notes
-// @access Public
+// @access Private
 exports.getNotes = async (req, res, next) => {
   try {
     const notes = await Note.find();
@@ -22,7 +22,7 @@ exports.getNotes = async (req, res, next) => {
 
 // @desc Add note
 // @route POST /api/v1/notes
-// @access Public
+// @access Private
 exports.addNote = async (req, res, next) => {
   try {
     const { subject, author, text } = req.body;
@@ -52,7 +52,7 @@ exports.addNote = async (req, res, next) => {
 
 // @desc Delete note
 // @route DELETE /api/v1/notes/:id
-// @access Public
+// @access Private
 exports.deleteNote = async (req, res, next) => {
   try {
     const note = await Note.findById(req.params.id);

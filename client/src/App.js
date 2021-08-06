@@ -1,7 +1,9 @@
-import Header from "./components/Header";
 import Notes from "./components/Notes";
 import Footer from "./components/Footer";
 import About from "./components/About";
+import NavBar from "./components/NavBar";
+import Features from "./components/Features";
+import ModalForm from "./components/ModalForm";
 
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -56,22 +58,27 @@ const App = () => {
   return (
     <Router>
       <div className="app">
+        <NavBar />
         <Route
           path="/"
           exact
           render={(props) => (
             <>
-              <Header
-                onAdd={addNote}
-                onClickShow={handleShow}
-                onClickClose={handleClose}
-                show={show}
-              />
+              <NavBar>
+                <ModalForm
+                  onAdd={addNote}
+                  onClickShow={handleShow}
+                  onClickClose={handleClose}
+                  show={show}
+                />
+              </NavBar>
               <Notes notes={notes} onDelete={deleteNote} />
             </>
           )}
         />
         <Route path="/about" component={About} />
+        <Route path="/features" component={Features} />
+
         <Footer />
       </div>
     </Router>
