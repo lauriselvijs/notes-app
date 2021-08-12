@@ -2,31 +2,53 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
+import Alert from "react-bootstrap/Alert";
+
 import { useState } from "react";
 
-const ModalForm = ({ onClickShow, onClickClose, show, onAdd }) => {
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { noteActions } from "../state";
+
+const ModalForm = () => {
+  const [show, setShow] = useState(false);
+  const [showError, setShowError] = useState(false);
+
   const [subject, setSubject] = useState();
   const [author, setAuthor] = useState();
   const [text, setText] = useState();
+
+  const dispatch = useDispatch();
+
+  const { addNote } = bindActionCreators(noteActions, dispatch);
 
   // checking for empty input
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (!text || !author || !subject) {
-      alert("Please fill missing fields");
-      return;
+      setShowError(true);
+      setShow(true);
+    } else {
+      addNote({ subject, author, text });
+      setSubject(null);
+      setAuthor(null);
+      setText(null);
+      setShowError(false);
     }
+  };
 
-    onAdd({ subject, author, text });
+  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
   };
   return (
     <>
-      <Button variant="success" onClick={() => onClickShow()}>
+      <Button variant="success" onClick={() => handleShow()}>
         Add a note
       </Button>
 
-      <Modal show={show} onHide={() => onClickClose()}>
+      <Modal show={show} onHide={() => handleClose()}>
         <Modal.Body className="notes-modal-form">
           <Form onSubmit={onSubmit}>
             <Form.Group>
@@ -34,6 +56,7 @@ const ModalForm = ({ onClickShow, onClickClose, show, onAdd }) => {
               <Form.Control
                 type="text"
                 placeholder="Subject"
+                className="mb-3"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
               />
@@ -43,28 +66,34 @@ const ModalForm = ({ onClickShow, onClickClose, show, onAdd }) => {
               <Form.Control
                 type="text"
                 placeholder="Author"
+                className="mb-3"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label className="mb-10">Note</Form.Label>
+              <Form.Label>Note</Form.Label>
               <Form.Control
                 as="textarea"
-                rows={3}
                 placeholder="Note"
+                className="mb-3"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
               />
             </Form.Group>
+            {showError && (
+              <Alert variant="danger" className="m-2">
+                Please insert all fields
+              </Alert>
+            )}
             <Modal.Footer>
-              <Button variant="danger" onClick={() => onClickClose()}>
+              <Button variant="danger" onClick={() => handleClose()}>
                 Close
               </Button>
               <Button
                 type="submit"
                 variant="success"
-                onClick={() => onClickClose()}
+                onClick={() => handleClose()}
               >
                 Save
               </Button>

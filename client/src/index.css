@@ -33,18 +33,13 @@ body {
 }
 
 .footer {
-  grid-column: 1 / 4;
   position: relative;
   text-align: center;
 }
 
 .about {
-  grid-column: 2 / 3;
   text-align: center;
-  min-height: 250px;
-  min-width: 250px;
-  background-repeat: no-repeat;
-  background-image: url("./images/stickyNote.svg");
+  padding: 65px;
 }
 
 .copyright-year {
