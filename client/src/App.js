@@ -31,7 +31,7 @@ const App = () => {
             exact
             render={(props) => (
               <>
-                <NavBar></NavBar>
+                <NavBar />
                 <Notes />
               </>
             )}

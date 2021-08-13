@@ -10,6 +10,8 @@ import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { noteActions } from "../state";
 
+import "../styles/ModalForm.css";
+
 const ModalForm = () => {
   const [show, setShow] = useState(false);
   const [showError, setShowError] = useState(false);

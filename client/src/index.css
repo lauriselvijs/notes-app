@@ -1,51 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
 
 body {
   font-family: "Poppins", sans-serif;
-}
-
-.header {
-  align-items: center;
-}
-
-.btn {
-  font-size: 15px;
-  font-family: inherit;
-}
-
-.note {
-  font-family: "Handlee", sans-serif;
-  position: relative;
-  min-height: 250px;
-  min-width: 250px;
-  background-repeat: no-repeat;
-  background-image: url("./images/stickyNote.svg");
-  margin: 5px;
-  padding: 20px 30px;
-  text-align: center;
-}
-
-.bs-fill-trash-fill {
-  cursor: pointer;
-  position: absolute;
-  bottom: 30px;
-}
-
-.footer {
-  position: relative;
-  text-align: center;
-}
-
-.about {
-  text-align: center;
-  padding: 65px;
-}
-
-.copyright-year {
-  margin: 5px;
-}
-
-.notes-modal-form {
-  background-color: #ffff34;
 }

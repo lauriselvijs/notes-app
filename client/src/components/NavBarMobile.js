@@ -10,14 +10,14 @@ import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
-const NavBar = () => {
+const NavBarMobile = () => {
   const { isAuthenticated, user } = useSelector((state) => state.auth);
 
   // Shows loading screen
   const authLinks = (
     <>
       <ModalForm />
-      <Nav className="me-auto" className="ml-2">
+      <Nav className="me-auto">
         <Navbar.Text style={{ color: "white" }}>
           {user ? `Welcome ${user.name}` : ""}{" "}
         </Navbar.Text>
@@ -54,4 +54,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default NavBarMobile;
