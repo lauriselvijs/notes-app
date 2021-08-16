@@ -7,8 +7,8 @@ const Note = ({ note, onDelete }) => {
   return (
     <div className="note">
       <div className="note-text">
-        {note.text}
-        {/*Subject: {note.subject} Author: {note.author}*/}
+        {note.text}, {note.author} <br />
+        Subject: {note.subject}
       </div>
       <BsFillTrashFill
         className="bs-fill-trash-fill"
