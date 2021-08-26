@@ -12,7 +12,7 @@ const Note = ({ note, onDelete }) => {
       </div>
       <BsFillTrashFill
         className="bs-fill-trash-fill"
-        onClick={() => onDelete(note._id)}
+        onClick={() => onDelete()}
       />
     </div>
   );
