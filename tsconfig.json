@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "types": ["node"],
+    "allowJs": true, // <-- option to allow js files as input in the ts compiler
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "sourceMap": true
+  },
+  "files": [
+    "./node_modules/@types/bcryptjs/index.d.ts",
+    "./node_modules/@types/express/index.d.ts",
+    "./node_modules/@types/jsonwebtoken/index.d.ts",
+    "./node_modules/@types/node/index.d.ts"
+  ],
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules"]
+}

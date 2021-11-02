@@ -2,10 +2,10 @@
   "name": "notes-app",
   "version": "1.0.0",
   "description": "Backend for notes app",
-  "main": "server.js",
+  "main": "./dist/server.js",
   "scripts": {
-    "start": "node server",
-    "server": "nodemon server",
+    "start": "node ./dist/server",
+    "server": "nodemon ./dist/server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server \" \"npm run client\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
@@ -13,6 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/express": "^4.17.13",
+    "@types/jsonwebtoken": "^8.5.5",
+    "@types/node": "^16.11.6",
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "dotenv": "^10.0.0",
