@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var logger_1 = __importDefault(require("../utils/logger"));
+var logger_utils_1 = __importDefault(require("../utils/logger.utils"));
 var mongoose_1 = __importDefault(require("mongoose"));
 var colors_1 = __importDefault(require("colors"));
 var connectDB = function () { return __awaiter(void 0, void 0, void 0, function () {
@@ -55,11 +55,11 @@ var connectDB = function () { return __awaiter(void 0, void 0, void 0, function 
                     })];
             case 1:
                 conn = _a.sent();
-                logger_1.default.info(colors_1.default.cyan.underline.bold("MongoDB Connected: " + conn.connection.host));
+                logger_utils_1.default.info(colors_1.default.cyan.underline.bold("MongoDB Connected: " + conn.connection.host));
                 return [3 /*break*/, 3];
             case 2:
                 err_1 = _a.sent();
-                logger_1.default.error(colors_1.default.red("Error: " + err_1.message));
+                logger_utils_1.default.error(colors_1.default.red("Error: " + err_1.message));
                 process.exit(1);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];

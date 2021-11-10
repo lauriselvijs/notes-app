@@ -40,17 +40,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteNote = exports.addNote = exports.getNotes = void 0;
-var Note_1 = __importDefault(require("../models/Note"));
+var Note_models_1 = __importDefault(require("../models/Note.models"));
 // @desc Get all the notes of user
 // @route GET /api/v1/notes
 // @access Private
-var getNotes = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+var getNotes = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var notes, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, Note_1.default.find({ user_id: req.user.id })];
+                return [4 /*yield*/, Note_models_1.default.find({ user_id: req.user.id })];
             case 1:
                 notes = _a.sent();
                 return [2 /*return*/, res.status(200).json({
@@ -72,7 +72,7 @@ exports.getNotes = getNotes;
 // @desc Add note
 // @route POST /api/v1/notes
 // @access Private
-var addNote = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+var addNote = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var id, _a, subject, author, text, note, err_2, messages;
     return __generator(this, function (_b) {
         switch (_b.label) {
@@ -80,7 +80,7 @@ var addNote = function (req, res, next) { return __awaiter(void 0, void 0, void 
                 _b.trys.push([0, 2, , 3]);
                 id = req.user.id;
                 _a = req.body, subject = _a.subject, author = _a.author, text = _a.text;
-                return [4 /*yield*/, Note_1.default.create({ user_id: id, subject: subject, author: author, text: text })];
+                return [4 /*yield*/, Note_models_1.default.create({ user_id: id, subject: subject, author: author, text: text })];
             case 1:
                 note = _b.sent();
                 return [2 /*return*/, res.status(201).json({
@@ -111,13 +111,13 @@ exports.addNote = addNote;
 // @desc Delete note
 // @route DELETE /api/v1/notes/:id
 // @access Private
-var deleteNote = function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+var deleteNote = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var note, err_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 3, , 4]);
-                return [4 /*yield*/, Note_1.default.findById(req.params.id)];
+                return [4 /*yield*/, Note_models_1.default.findById(req.params.id)];
             case 1:
                 note = _a.sent();
                 if (!note) {

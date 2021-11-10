@@ -1,12 +1,12 @@
-export {};
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import User from "../models/User.models";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { Request, Response } from "express";
 
 // @desc Auth user
 // @route POST /api/v1/auth
 // @access Public
-exports.authUser = (req, res, next) => {
+export const authUser = (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   // Validation
@@ -17,7 +17,7 @@ exports.authUser = (req, res, next) => {
   }
 
   // Check for existing user
-  User.findOne({ email }).then((user) => {
+  User.findOne({ email }).then((user: any) => {
     if (!user) {
       return res.status(400).json({
         msg: "User does not exists",
@@ -32,7 +32,7 @@ exports.authUser = (req, res, next) => {
         {
           id: user.id,
         },
-        process.env.JWT_SECRET,
+        process.env.JWT_SECRET as string,
         { expiresIn: 3600 },
         (err, token) => {
           if (err) throw err;
@@ -53,8 +53,8 @@ exports.authUser = (req, res, next) => {
 // @desc Get user data
 // @route GET /api/v1/auth/user
 // @access Private
-exports.getUserData = (req, res, next) => {
+export const getUserData = (req: Request, res: Response) => {
   User.findById(req.user.id)
     .select("-password")
-    .then((user) => res.json(user));
+    .then((user: any) => res.json(user));
 };

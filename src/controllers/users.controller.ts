@@ -1,11 +1,12 @@
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import User from "../models/User.models";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { Request, Response } from "express";
 
 // @desc Register new user
 // @route POST /api/v1/users
 // @access Public
-exports.registerNewUser = (req, res, next) => {
+export const registerNewUser = (req: Request, res: Response) => {
   const { name, email, password } = req.body;
 
   // Validation
@@ -16,7 +17,7 @@ exports.registerNewUser = (req, res, next) => {
   }
 
   // Check for existing user
-  User.findOne({ email }).then((user) => {
+  User.findOne({ email }).then((user: any) => {
     if (user) {
       return res.status(400).json({
         msg: "User already exists",
@@ -34,12 +35,12 @@ exports.registerNewUser = (req, res, next) => {
       bcrypt.hash(newUser.password, salt, (err, hash) => {
         if (err) throw err;
         newUser.password = hash;
-        newUser.save().then((user) => {
+        newUser.save().then((user: any) => {
           jwt.sign(
             {
               id: user.id,
             },
-            process.env.JWT_SECRET,
+            process.env.JWT_SECRET as string,
             { expiresIn: 3600 },
             (err, token) => {
               if (err) throw err;

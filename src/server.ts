@@ -1,17 +1,17 @@
-export {};
-const path = require("path");
-const express = require("express");
-const dotenv = require("dotenv");
-const colors = require("colors");
-const connectDB = require("./config/db");
+import path from "path";
+import express from "express";
+import dotenv from "dotenv";
+import colors from "colors";
+import connectDB from "./config/db.config";
+import logger from "./utils/logger.utils";
 
 dotenv.config({ path: "./src/config/config.env" });
 
 connectDB();
 
-const notes = require("./routes/notes");
-const users = require("./routes/users");
-const auth = require("./routes/auth");
+import notes from "./routes/notes.route";
+import users from "./routes/users.route";
+import auth from "./routes/auth.route";
 
 const app = express();
 
@@ -31,9 +31,8 @@ if (process.env.NODE_ENV === "production") {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(
-  PORT,
-  console.log(
+app.listen(PORT, () =>
+  logger.info(
     colors.yellow.bold(
       `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`
     )

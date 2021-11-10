@@ -4,10 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUserData = exports.authUser = void 0;
-var User_1 = __importDefault(require("../models/User"));
+var User_models_1 = __importDefault(require("../models/User.models"));
 var bcryptjs_1 = __importDefault(require("bcryptjs"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-//import { IGetUserAuthInfoRequest } from "./definitionfile";
 // @desc Auth user
 // @route POST /api/v1/auth
 // @access Public
@@ -20,7 +19,7 @@ var authUser = function (req, res) {
         });
     }
     // Check for existing user
-    User_1.default.findOne({ email: email }).then(function (user) {
+    User_models_1.default.findOne({ email: email }).then(function (user) {
         if (!user) {
             return res.status(400).json({
                 msg: "User does not exists",
@@ -52,7 +51,7 @@ exports.authUser = authUser;
 // @route GET /api/v1/auth/user
 // @access Private
 var getUserData = function (req, res) {
-    User_1.default.findById(req.user.id)
+    User_models_1.default.findById(req.user.id)
         .select("-password")
         .then(function (user) { return res.json(user); });
 };

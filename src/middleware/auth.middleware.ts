@@ -1,10 +1,10 @@
-export {};
-const jwt = require("jsonwebtoken");
+import jwt = require("jsonwebtoken");
+import { Request, Response, NextFunction } from "express";
 
 // @desc Auth user
 // @route POST /api/v1/auth
 // @access Public
-exports.auth = (req, res, next) => {
+export const auth = (req: Request, res: Response, next: NextFunction) => {
   const token = req.header("x-auth-token");
 
   // Check for token
@@ -13,7 +13,7 @@ exports.auth = (req, res, next) => {
 
   try {
     // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
 
     // Add user from payload
     req.user = decoded;

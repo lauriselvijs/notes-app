@@ -4,13 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.registerNewUser = void 0;
-var User_1 = __importDefault(require("../models/User"));
+var User_models_1 = __importDefault(require("../models/User.models"));
 var bcryptjs_1 = __importDefault(require("bcryptjs"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 // @desc Register new user
 // @route POST /api/v1/users
 // @access Public
-var registerNewUser = function (req, res, next) {
+var registerNewUser = function (req, res) {
     var _a = req.body, name = _a.name, email = _a.email, password = _a.password;
     // Validation
     if (!name || !email || !password) {
@@ -19,13 +19,13 @@ var registerNewUser = function (req, res, next) {
         });
     }
     // Check for existing user
-    User_1.default.findOne({ email: email }).then(function (user) {
+    User_models_1.default.findOne({ email: email }).then(function (user) {
         if (user) {
             return res.status(400).json({
                 msg: "User already exists",
             });
         }
-        var newUser = new User_1.default({
+        var newUser = new User_models_1.default({
             name: name,
             email: email,
             password: password,

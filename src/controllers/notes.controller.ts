@@ -1,9 +1,10 @@
-const Note = require("../models/Note");
+import Note from "../models/Note.models";
+import { Request, Response } from "express";
 
 // @desc Get all the notes of user
 // @route GET /api/v1/notes
 // @access Private
-exports.getNotes = async (req, res, next) => {
+export const getNotes = async (req: Request, res: Response) => {
   try {
     //const notes = await Note.find();
 
@@ -25,7 +26,7 @@ exports.getNotes = async (req, res, next) => {
 // @desc Add note
 // @route POST /api/v1/notes
 // @access Private
-exports.addNote = async (req, res, next) => {
+export const addNote = async (req: Request, res: Response) => {
   try {
     const { id } = req.user;
 
@@ -36,7 +37,7 @@ exports.addNote = async (req, res, next) => {
       success: true,
       data: note,
     });
-  } catch (err) {
+  } catch (err: any) {
     if (err.name === "ValidationError") {
       const messages = Object.values(err.errors).map((val: any) => val.message);
 
@@ -56,7 +57,7 @@ exports.addNote = async (req, res, next) => {
 // @desc Delete note
 // @route DELETE /api/v1/notes/:id
 // @access Private
-exports.deleteNote = async (req, res, next) => {
+export const deleteNote = async (req: Request, res: Response) => {
   try {
     const note = await Note.findById(req.params.id);
 

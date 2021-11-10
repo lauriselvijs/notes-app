@@ -1,5 +1,4 @@
-export {};
-const mongoose = require("mongoose");
+import mongoose = require("mongoose");
 
 const NoteSchema = new mongoose.Schema({
   user_id: {
@@ -26,4 +25,6 @@ const NoteSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Note", NoteSchema);
+const Note = mongoose.model("Note", NoteSchema);
+
+export default Note;
